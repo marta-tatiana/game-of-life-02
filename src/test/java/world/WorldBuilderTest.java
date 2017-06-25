@@ -10,19 +10,19 @@ public class WorldBuilderTest {
 
     @Test public void
     should_return_empty_plane() {
-        assertThat(new WorldBuilder().aPlane().build(), equalTo(new World(null)));
+        assertThat(new WorldBuilder().withDimentions(0,0).build(), equalTo(new World(new boolean[0][0])));
     }
 
     @Test public void
     should_return_world_with_correct_sizes() {
-        World newWorld = new WorldBuilder().aPlane().withDimentions(10, 5).build();
+        World newWorld = new WorldBuilder().withDimentions(10, 5).build();
         assertThat(newWorld.getHeight(), is(5));
         assertThat(newWorld.getWidth(), is(10));
     }
 
     @Test public void
     should_return_dead_world() {
-        World newWorld = new WorldBuilder().aPlane().withDimentions(9, 4).allDead().build();
+        World newWorld = new WorldBuilder().withDimentions(9, 4).allDead().build();
         boolean[][] cells = newWorld.getCells();
         for (int i = 0; i < newWorld.getWidth(); ++i)
             for (int j = 0; j < newWorld.getHeight(); ++j)

@@ -4,15 +4,6 @@ public class WorldBuilder {
 
     private World world;
 
-    public WorldBuilder aPlane() {
-        this.world = new World(null);
-        return this;
-    }
-
-    public WorldBuilder withSize(int i) {
-        return this;
-    }
-
     public WorldBuilder allDead() {
         for (int i = 0; i < world.getHeight(); ++i)
             for (int j = 0; j < world.getWidth(); ++j)
@@ -25,9 +16,21 @@ public class WorldBuilder {
         return world;
     }
 
-    WorldBuilder withDimentions(int width, int height) {
-        boolean[][] cells = new boolean[width][height];
-        world.setCells(cells);
+    public WorldBuilder withDimentions(int width, int height) {
+        this.world = new World(new boolean[width][height]);
+        return this;
+    }
+
+    public WorldBuilder withLiveCellAt(int i, int j) {
+        world.markAsLive(i, j);
+        return this;
+    }
+
+    public WorldBuilder allLive() {
+        for (int i = 0; i < world.getWidth(); ++i)
+            for (int j = 0; j < world.getHeight(); ++j)
+                world.markAsLive(i, j);
+
         return this;
     }
 }
