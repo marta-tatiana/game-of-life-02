@@ -1,17 +1,17 @@
 import visualization.Visualization;
 import world.World;
 
-public class GameOfLife {
+class GameOfLife {
 
     private Visualization visualization;
     private World world;
 
-    public GameOfLife(World startingWorld, Visualization visualization) {
+    GameOfLife(World startingWorld, Visualization visualization) {
         this.visualization = visualization;
         this.world = startingWorld;
     }
 
-    public GameOfLife next() {
+    GameOfLife next() {
         boolean[][] oldCells = world.getCells();
         boolean[][] newCells = new boolean[world.getWidth()][world.getHeight()];
         for (int i = 0; i < world.getWidth(); ++i) {
@@ -37,7 +37,7 @@ public class GameOfLife {
         return this;
     }
 
-    public String print() {
+    String print() {
         return visualization.print(world);
     }
 }

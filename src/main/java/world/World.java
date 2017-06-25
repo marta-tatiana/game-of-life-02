@@ -1,16 +1,14 @@
 package world;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 class ImmutablePair {
     final int first;
     final int second;
 
-    public ImmutablePair(int first, int second) {
+    ImmutablePair(int first, int second) {
         this.first = first;
         this.second = second;
     }
@@ -58,7 +56,7 @@ public class World {
         return cells;
     }
 
-    public void markAsLive(int i, int j) {
+    void markAsLive(int i, int j) {
         cells[i][j] = World.LIVE;
     }
 

@@ -25,7 +25,6 @@ public class WorldTest {
     @Test public void
     should_correctly_count_live_neighbours() {
        World world = new WorldBuilder().withDimentions(5, 1).allDead().build();
-       boolean[][] cells = world.getCells();
        for (int i = 0; i < world.getWidth(); ++i)
            for (int j = 0; j < world.getHeight(); ++j)
                assertThat(world.countLiveNeighboursOf(i,j), is(0));
@@ -34,7 +33,6 @@ public class WorldTest {
     @Test public void
     should_correctly_count_live_neighbours_of_all_live() {
         World world = new WorldBuilder().withDimentions(5, 1).allLive().build();
-        boolean[][] cells = world.getCells();
         assertThat(world.countLiveNeighboursOf(0,0), is(1));
         assertThat(world.countLiveNeighboursOf(1, 0), is(2));
         assertThat(world.countLiveNeighboursOf(2, 0), is(2));
@@ -51,7 +49,6 @@ public class WorldTest {
                 .withLiveCellAt(2, 2)
                 .withLiveCellAt(1, 1)
                 .build();
-        boolean[][] cells = world.getCells();
         assertThat(world.countLiveNeighboursOf(0,0), is(1));
         assertThat(world.countLiveNeighboursOf(1, 0), is(3));
         assertThat(world.countLiveNeighboursOf(2, 0), is(1));
